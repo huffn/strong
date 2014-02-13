@@ -1,7 +1,7 @@
 {
   "name": "strong",
   "description": "Strong i18n for Express.js-based applications",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "FamilySearch Web Developers",
   "contributors": [ 
     { "name": "Tim Shadel", "email": "tim@shadelsoftware.com" },
