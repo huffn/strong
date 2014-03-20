@@ -97,7 +97,7 @@ describe('strong', function(){
     var user = { name: 'Johnny' };
     expect(strong.translate( 'hello', user )).toEqual( 'Hello, Johnny' );
   });
-  
+
   it('should navigate the object to fill substitution arguments', function() {
     strong.back.putAtPath('en.hello', 'Hello, %{name.first}');
     // Make sure you can use dot notation
@@ -108,7 +108,7 @@ describe('strong', function(){
   // Pluralization
   it('should select an appropriate pluralization option', function() {
     strong.back.putAtPath('en.message_count', { one: '1 message', other: '%{count} messages' } );
-  
+
     expect(strong.translate( 'message_count', { count: 0 } )).toEqual( '0 messages' );
     expect(strong.translate( 'message_count', { count: 1 } )).toEqual( '1 message' );
     expect(strong.translate( 'message_count', { count: 2 } )).toEqual( '2 messages' );
@@ -178,6 +178,18 @@ describe('strong', function(){
     strong.default_locale = 'de';
     strong.locale = ['de', 'ru', 'zh'];
     expect(strong.acceptable()).toEqual(false);
+  });
+
+  it("should return the key for debug mode 'ke'", function() {
+    strong.back.putAtPath('en.everything', 'I am a translated string for locale: en');
+    strong.default_locale = 'ke';
+    expect(strong.translate('everything')).toEqual('[everything]');
+  });
+
+  it("should return the path and key for debug mode 'zz'", function() {
+    strong.back.putAtPath('en.testing.everything', 'I am a translated string for locale: en');
+    strong.default_locale = 'zz';
+    expect(strong.translate('testing.everything')).toEqual('[testing.everything]');
   });
 });
 
