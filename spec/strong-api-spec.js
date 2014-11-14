@@ -238,5 +238,11 @@ describe('strong.decorator', function () {
     mockData.t.apply({locals:{locale:['es','zh']}}, ['everything', {locale:['pt-BR', 'en']}]);
     expect(translateMock).toHaveBeenCalledWith("everything", { locale: ['pt-BR', 'en'], view_path: [ 'mockAppName', 'testfile' ] });
   });
+  
+  it('should return all translations when a key doesn\'t match', function() {
+    strong.back.putAtPath('en.everything.first', 'first');
+    strong.back.putAtPath('en.everything.second', 'second');
+    expect(strong.pageTranslations({view_path: ['everything']})).toEqual({ first : 'first', second : 'second' });
+  });
 
 });
