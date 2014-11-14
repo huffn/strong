@@ -239,7 +239,7 @@ describe('strong.decorator', function () {
     expect(translateMock).toHaveBeenCalledWith("everything", { locale: ['pt-BR', 'en'], view_path: [ 'mockAppName', 'testfile' ] });
   });
   
-  it('should return all translations when a key doesn\'t match', function() {
+  it('should return all translations when using pageTranslations', function() {
     strong.back.putAtPath('en.everything.first', 'first');
     strong.back.putAtPath('en.everything.second', 'second');
     expect(strong.pageTranslations({view_path: ['everything']})).toEqual({ first : 'first', second : 'second' });
